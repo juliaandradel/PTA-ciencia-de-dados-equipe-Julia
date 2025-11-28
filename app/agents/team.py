@@ -1,12 +1,12 @@
 from agno.team import Team
 
-from .another import another_agent
-from .dummy import dummy_agent
+from .agente1 import agente1
+from .agente2 import agente2
 
 team = Team(
     name="Example Team",
     mode="route",
-    members=[dummy_agent, another_agent],
+    members=[agente1, agente2],
     instructions="This team is designed to handle example tasks.",
     show_members_responses=True
 )

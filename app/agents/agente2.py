@@ -4,9 +4,9 @@ from agno.agent import  Agent
 from dotenv import load_dotenv
 
 load_dotenv()
-agent = Agent(
+agente2 = Agent(
     model = Gemini(id = "models/gemini-2.5-flash"),
     tools = [TavilyTools()],
 )
 
-agent.print_response("Qual a data de nascimento do cantor Roberto Carlos")
+agente2.print_response("Qual a data de nascimento do cantor Manoel Gomes")

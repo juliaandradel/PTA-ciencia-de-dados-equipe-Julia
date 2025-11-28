@@ -2,9 +2,12 @@ from agno.models.google import Gemini
 from agno.tools.tavily import TavilyTools
 from agno.agent import  Agent
 from dotenv import load_dotenv
+from agno.db.sqlite import SqliteDb
 import re
 
 load_dotenv()
+
+db = SqliteDb(db_file="tmp/data.db")
 
 def formatar_data(texto: str) -> str:
     """
@@ -44,6 +47,11 @@ agent = Agent(
     model = Gemini(id = "models/gemini-2.5-flash"),
     tools = [TavilyTools(),
              formatar_data],
+    db=db,
+    add_history_to_context=True,
+    num_history_runs=4
 )
 
 agent.print_response("Qual a data de nascimento do cantor Manoel Gomes")
+agent.print_response("Qual a data de nascimento do jogador de futebol Neymar")
+agent.print_response("Quais foram as pessoas que eu perguntei a data de nascimento")

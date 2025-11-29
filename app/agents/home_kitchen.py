@@ -1,35 +1,18 @@
 from agno.agent import Agent
 from agno.models.google import Gemini
-from agno.knowledge.pdf import PDFKnowledgeBase
-from agno.vectordb.lancedb import LanceDb
-from agno.embedder.google import GeminiEmbedder
-
-# Define onde o conhecimento fica guardado
-home_knowledge = PDFKnowledgeBase(
-    path="knowledge_base/home_kitchen",
-    vector_db=LanceDb(
-        table_name="home_kitchen_knowledge",
-        uri="tmp/lancedb",
-        embedder=GeminiEmbedder(id="models/text-embedding-004"),
-    ),
-)
-
-# Carrega os PDFs
-home_knowledge.load(recreate=False)
+from app.knowledge import home_knowledge
 
 home_kitchen_agent = Agent(
-    name="Home & Kitchen Specialist",
-    role="Especialista em Casa e Cozinha da O-Market",
-    model=Gemini(id="gemini-2.0-flash-exp"),
-    description="Você ajuda clientes a escolherem os melhores utensílios e decoração.",
+    name="Agent_Casa_Conforto",
+    role="Especialista em Casa e Decoração da O-Market",
+    model=Gemini(id="gemini-1.5-flash-002"),
     instructions=[
-        "Ao responder, PRIMEIRO busque no seu conhecimento (knowledge base).",
-        "Foque em materiais, cuidados e dimensões.",
-        "Cite a fonte (o nome do arquivo PDF) sempre que possível.",
+        "Foque em materiais, dimensões e design.",
+        "Sempre consulte sua base de conhecimento.",
+        "Cite o nome do arquivo PDF usado como fonte."
     ],
     knowledge=home_knowledge,
     search_knowledge=True,
     markdown=True,
-    show_tool_calls=True,
-    add_datetime_to_instructions=True,
+    show_tool_calls=True
 )

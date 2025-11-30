@@ -1,23 +1,21 @@
 from agno.agent import Agent
 from agno.models.google import Gemini
 from agno.playground import Playground, serve_playground_app
-
-# Importa os agentes que criamos
 from .electronics import electronics_agent
 from .home_kitchen import home_kitchen_agent
 
-# Agente Genérico (Davi) para coisas que não se encaixam
+# Agente Genérico
 general_agent = Agent(
     name="Agent_Geral",
     role="Atendente Geral",
-    model=Gemini(id="gemini-1.5-flash-002"),
+    model=Gemini(id="models/gemini-1.5-flash"), # <--- AQUI
     instructions="Responda cordialmente a saudações e dúvidas que não sejam sobre produtos específicos."
 )
 
 # O TIME (Roteador)
 team = Agent(
     name="O-Market Team",
-    model=Gemini(id="gemini-1.5-flash-002"),
+    model=Gemini(id="models/gemini-1.5-flash"), # <--- E AQUI
     team=[electronics_agent, home_kitchen_agent, general_agent],
     instructions=[
         "Você é o Gerente de Inteligência da O-Market.",

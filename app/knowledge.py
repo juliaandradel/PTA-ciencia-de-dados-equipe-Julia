@@ -1,6 +1,6 @@
 from agno.knowledge.pdf import PDFKnowledgeBase
 from agno.vectordb.lancedb import LanceDb
-from agno.embedder.google import GeminiEmbedder
+from agno.knowledge.embedder.google import GeminiEmbedder
 
 # Definição do Conhecimento de Eletrônicos
 electronics_knowledge = PDFKnowledgeBase(

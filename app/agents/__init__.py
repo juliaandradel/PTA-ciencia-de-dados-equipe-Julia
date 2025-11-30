@@ -1,6 +1,6 @@
 from agno.agent import Agent
 from agno.models.google import Gemini
-from agno.playground import Playground, serve_playground_app
+
 
 # Importa os agentes que criamos
 from .electronics import electronics_agent

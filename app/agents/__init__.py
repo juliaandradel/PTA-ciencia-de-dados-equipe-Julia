@@ -14,6 +14,7 @@ general_agent = Agent(
     instructions="Responda cordialmente a saudações e dúvidas que não sejam sobre produtos específicos."
 )
 
+"""
 # O TIME (Roteador)
 team = Agent(
     name="O-Market Team",
@@ -30,3 +31,4 @@ team = Agent(
     markdown=True,
     show_tool_calls=True
 )
+"""

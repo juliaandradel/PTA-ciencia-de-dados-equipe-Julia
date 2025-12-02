@@ -19,7 +19,6 @@ home_kitchen_agent = Agent(
     tools = [TavilyTools()],
     search_knowledge=True,
     markdown=True,
-    show_tool_calls=True
 )
 
 
